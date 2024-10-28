@@ -11,7 +11,8 @@ body {
 }
 
 header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
     height: 100vh;
     color: white;
     text-align: center;
@@ -19,8 +20,26 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    background-color: #1a1a2e; /* Warna dasar */
 }
+
+header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: radial-gradient(circle, #ff6347 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: particles-animation 15s linear infinite;
+}
+
+@keyframes particles-animation {
+    from { transform: translate(0, 0); }
+    to { transform: translate(50px, 50px); }
+}
+
 
 nav {
     width: 100%;
@@ -117,6 +136,7 @@ nav ul li a:hover {
     border-radius: 5px;
     font-size: 18px;
 }
+
 
 .slider {
     position: relative;
@@ -349,7 +369,9 @@ h2 {
 }
 
 footer {
-    background-color: #282c34;
+    background: linear-gradient(-45deg, #282c34, #1a1a2e, #282c34, #1a1a2e);
+    background-size: 400% 400%;
+    animation: footer-gradient-animation 10s ease infinite;
     color: #ffffff;
     padding: 40px 20px;
     font-size: 14px;
@@ -411,6 +433,13 @@ footer {
     border-top: 1px solid #ffffff;
     padding-top: 20px;
 }
+
+@keyframes footer-gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 
 
 @media (max-width: 768px) {
